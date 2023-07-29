@@ -1,4 +1,5 @@
-using Gangster.ApiModel.ApiResponse;
+using Gangster.Application.Gangster.Commands.CreateGangsterHandler;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gangster.WebApi.Controllers;
@@ -7,9 +8,16 @@ namespace Gangster.WebApi.Controllers;
 [Route("api/[controller]")]
 public class GangsterController : ControllerBase
 {
-    [HttpGet("Gangsters")]
-    public ActionResult<APIResponse<string>> Gangsters()
+    private readonly IMediator _mediator;
+
+    public GangsterController(IMediator mediator)
     {
-        return APIResponse<string>.SendResponse(StatusCodes.Status200OK, "this is message", "this is data", true);
+        _mediator = mediator;
+    }
+
+    [HttpPost("Gangsters")]
+    public async Task<ActionResult<CreateGangsterResponse>> Gangsters([FromBody] CreateGangsterRequest request)
+    {
+        return await _mediator.Send(request);
     }
 }

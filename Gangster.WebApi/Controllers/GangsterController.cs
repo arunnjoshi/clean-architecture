@@ -1,3 +1,4 @@
+using Gangster.ApiModel.ApiResponse;
 using Gangster.Application.Gangster.Commands.CreateGangsterHandler;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,7 @@ public class GangsterController : ControllerBase
     }
 
     [HttpPost("Gangsters")]
-    public async Task<ActionResult<CreateGangsterResponse>> Gangsters([FromBody] CreateGangsterRequest request)
+    public async Task<ActionResult<APIResponse<CreateGangsterResponse>>> Gangsters([FromBody] CreateGangsterRequest request)
     {
         return await _mediator.Send(request);
     }

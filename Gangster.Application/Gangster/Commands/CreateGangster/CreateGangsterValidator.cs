@@ -10,7 +10,7 @@ public class CreateGangsterValidator : AbstractValidator<CreateGangsterRequest>
     public CreateGangsterValidator()
     {
         RuleFor(v => v.FirstName)
-            .Cascade(CascadeMode.StopOnFirstFailure)
+            .Cascade(RuleLevelCascadeMode)
             .NotEmpty()
             .MinimumLength(3)
             .WithMessage("First name should be at least 3 character.")
@@ -18,13 +18,13 @@ public class CreateGangsterValidator : AbstractValidator<CreateGangsterRequest>
             .WithMessage("First name max length should be 20 character.");
 
         RuleFor(v => v.LastName)
-            .Cascade(CascadeMode.StopOnFirstFailure)
+            .Cascade(RuleLevelCascadeMode)
             .NotEmpty()
-           .MinimumLength(3)
-           .WithMessage("Last name should be at least 3 character.")
-           .MaximumLength(20)
-           .WithMessage("Last name max length should be 20 character.")
-           .NotEmpty();
+            .MinimumLength(3)
+            .WithMessage("Last name should be at least 3 character.")
+            .MaximumLength(20)
+            .WithMessage("Last name max length should be 20 character.")
+            .NotEmpty();
 
         RuleFor(v => v.DOB)
             .NotNull();

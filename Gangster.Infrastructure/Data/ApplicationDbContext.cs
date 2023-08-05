@@ -1,11 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Gangster.ApiModel.Gangster;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace Gangster.Infrastructure
+namespace Gangster.Infrastructure.Data
 {
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+
+        public DbSet<GangsterModel> Gangster => Set<GangsterModel>();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Configure SQLite

@@ -2,7 +2,7 @@
 
 namespace Gangster.ApiModel.Gangster;
 
-public class Gangster : BaseEntity
+public class GangsterModel : BaseEntity
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }

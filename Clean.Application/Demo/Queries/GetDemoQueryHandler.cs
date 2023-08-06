@@ -1,5 +1,5 @@
-﻿using Clean.Application.Common.Interfaces;
-using Clean.Domain;
+﻿using AutoMapper;
+using Clean.Application.Common.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,16 +7,19 @@ namespace Clean.Application.Demo.Queries
 {
     public class GetDemoQueryHandler : IRequestHandler<GetDemoQuery, List<GetDemoResponse>>
     {
-        private readonly IApplicationDbContext dbContext;
+        private readonly IApplicationDbContext _dbContext;
+        private readonly IMapper _mapper;
 
-        public GetDemoQueryHandler(IApplicationDbContext dbContext)
+        public GetDemoQueryHandler(IApplicationDbContext dbContext,IMapper mapper)
         {
-            this.dbContext = dbContext;
+            _dbContext = dbContext;
+            _mapper = mapper;
         }
 
         public async Task<List<GetDemoResponse>> Handle(GetDemoQuery request, CancellationToken cancellationToken)
         {
-            return await dbContext.Demo.Select(x => new GetDemoResponse { Id = x.Id, DOB = x.DOB, Name = x.Name }).ToListAsync(); ;
+            var demos = await _dbContext.Demo.AsNoTracking().ToListAsync(cancellationToken);
+            return _mapper.Map<List<GetDemoResponse>>(demos); ;
         }
     }
 }

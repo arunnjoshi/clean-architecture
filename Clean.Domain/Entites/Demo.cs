@@ -1,4 +1,4 @@
-﻿namespace Clean.Application
+﻿namespace Clean.Domain
 {
     public class Demo
     {

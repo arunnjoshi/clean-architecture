@@ -1,4 +1,4 @@
-﻿using Clean.Application;
+﻿using Clean.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 

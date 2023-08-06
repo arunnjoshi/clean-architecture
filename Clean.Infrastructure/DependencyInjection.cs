@@ -2,21 +2,23 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Clean.Application.Common.Interfaces;
-
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Clean.Infrastructure.Data.Interceptors;
+using Microsoft.Extensions.Configuration;
 
 namespace Clean.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
+        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = "server=(localdb)\\mssqllocaldb;Database=Demo;Trusted_Connection=True;";
-
+            var connectionString = configuration.GetSection("AppSettings:ConnectionStrings:Default");
+            services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
             services.AddDbContext<ApplicationDbContext>((sp, options) =>
             {
-                options.UseSqlServer(connectionString);
+                options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
+                options.UseSqlServer(connectionString.Value);
             });
-            //services.AddSingleton(TimeProvider.System);
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
             return services;
         }

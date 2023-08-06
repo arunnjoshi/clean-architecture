@@ -11,10 +11,9 @@ namespace Clean.Infrastructure.Data.Interceptors
     {
         private readonly IUser _user;
         //private readonly TimeProvider _dateTime;
-        public AuditableEntityInterceptor(
-            IUser user)
+        public AuditableEntityInterceptor()
         {
-            _user = user;
+            //_user = user;
             //_dateTime = dateTime;
         }
 
@@ -40,14 +39,15 @@ namespace Clean.Infrastructure.Data.Interceptors
             {
                 if (entry.State == EntityState.Added)
                 {
-                    entry.Entity.CreatedBy = _user.Id;
-                    //entry.Entity.Created = _dateTime.GetUtcNow();
+                    entry.Entity.Id = Guid.NewGuid();
+                    entry.Entity.CreatedBy = Guid.NewGuid().ToString();
+                    entry.Entity.Created = DateTime.UtcNow;
                 }
 
                 if (entry.State == EntityState.Added || entry.State == EntityState.Modified || entry.HasChangedOwnedEntities())
                 {
-                    entry.Entity.LastModifiedBy = _user.Id;
-                    //entry.Entity.LastModified = _dateTime.GetUtcNow();
+                    entry.Entity.LastModifiedBy = Guid.NewGuid().ToString();
+                    entry.Entity.LastModified = DateTime.UtcNow;
                 }
             }
         }

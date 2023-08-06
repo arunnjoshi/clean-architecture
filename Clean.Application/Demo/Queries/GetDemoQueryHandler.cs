@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Clean.Application.Common.Interfaces;
+using Clean.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

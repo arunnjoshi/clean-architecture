@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -6,7 +7,7 @@ namespace Clean.Application
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
@@ -20,7 +21,6 @@ namespace Clean.Application
                 //cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
                 //cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
             });
-
             return services;
         }
     }

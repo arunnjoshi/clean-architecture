@@ -1,8 +1,9 @@
-﻿namespace Clean.Domain
+﻿using Clean.Domain.Entites.Common;
+
+namespace Clean.Domain
 {
-    public class DemoEntity
+    public class DemoEntity : BaseAuditableEntity
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public DateTime DOB { get; set; }
     }

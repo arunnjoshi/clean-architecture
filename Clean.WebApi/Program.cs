@@ -30,3 +30,6 @@ app.MapControllers();
 app.UseMiddleware<CustomExceptionHandler>();
 
 app.Run();
+
+//dotnet ef migrations add "base entity" --project Clean.Infrastructure --startup-project Clean.WebApi --output-dir Data\Migrations
+//dotnet ef database update  --project Clean.Infrastructure --startup-project Clean.WebApi

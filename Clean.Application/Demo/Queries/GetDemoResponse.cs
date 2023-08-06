@@ -1,6 +1,6 @@
-﻿namespace Clean.Domain
+﻿namespace Clean.Application.Demo.Queries
 {
-    public class Demo
+    public class GetDemoResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

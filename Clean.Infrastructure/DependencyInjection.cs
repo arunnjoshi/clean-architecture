@@ -1,6 +1,7 @@
 ﻿using Clean.Infrastructure.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Clean.Application.Common.Interfaces;
 
 namespace Clean.Infrastructure
 {
@@ -14,6 +15,7 @@ namespace Clean.Infrastructure
             {
                 options.UseSqlServer(connectionString);
             });
+            services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
             return services;
         }
     }

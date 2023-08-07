@@ -1,6 +1,8 @@
+using Clean.Application.Common.AppConfiguration;
 using Clean.Application.Demo.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Clean.WebApi.Controllers;
 
@@ -9,10 +11,11 @@ namespace Clean.WebApi.Controllers;
 public class DemoController : ControllerBase
 {
     private readonly IMediator _mediator;
-
-    public DemoController(IMediator mediator)
+    private readonly AppSettings _appSettings;
+    public DemoController(IMediator mediator, IOptions<AppSettings> appsettings)
     {
         _mediator = mediator;
+        _appSettings = appsettings.Value;
     }
 
     [HttpGet("Demo")]

@@ -1,4 +1,4 @@
-﻿namespace Gangster.Infrastructure
+﻿namespace Clean.Domain
 {
     public class Class1
     {

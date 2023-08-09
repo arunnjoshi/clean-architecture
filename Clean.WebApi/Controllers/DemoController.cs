@@ -12,10 +12,10 @@ public class DemoController : ControllerBase
 {
     private readonly IMediator _mediator;
     private readonly AppSettings _appSettings;
-    public DemoController(IMediator mediator, IOptions<AppSettings> appsettings)
+    public DemoController(IMediator mediator, IOptions<AppSettings> appSettings)
     {
-        _mediator = mediator;
-        _appSettings = appsettings.Value;
+        _mediator    = mediator;
+        _appSettings = appSettings.Value;
     }
 
     [HttpGet("Demo")]

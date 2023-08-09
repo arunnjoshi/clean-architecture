@@ -2,7 +2,7 @@ using Clean.Infrastructure;
 using Clean.WebApi.Exception;
 using Clean.Application;
 using Clean.Application.Common.AppConfiguration;
-using Microsoft.Extensions.DependencyInjection;
+using Clean.Application.Common.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 IConfiguration configuration = builder.Configuration;
@@ -11,12 +11,13 @@ IConfiguration configuration = builder.Configuration;
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
+builder.Services.AddJWTAuthentication(configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplicationServices(configuration);
 builder.Services.AddInfrastructureServices(configuration);
+builder.Services.AddAuthorization();
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -25,10 +26,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthorization();
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapControllers().RequireAuthorization();
 
 app.UseMiddleware<CustomExceptionHandler>();
 

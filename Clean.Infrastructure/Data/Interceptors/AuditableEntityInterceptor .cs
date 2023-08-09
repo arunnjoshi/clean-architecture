@@ -1,5 +1,4 @@
 ﻿using Clean.Domain.Entites.Common;
-using Microsoft.AspNet.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -9,14 +8,6 @@ namespace Clean.Infrastructure.Data.Interceptors
 {
     public class AuditableEntityInterceptor : SaveChangesInterceptor
     {
-        private readonly IUser _user;
-        //private readonly TimeProvider _dateTime;
-        public AuditableEntityInterceptor()
-        {
-            //_user = user;
-            //_dateTime = dateTime;
-        }
-
         public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
         {
             UpdateEntities(eventData.Context);

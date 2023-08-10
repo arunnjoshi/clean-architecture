@@ -2,7 +2,7 @@
 using FluentValidation;
 using Newtonsoft.Json;
 
-namespace Clean.WebApi.Exception
+namespace Clean.WebApi.Exceptions
 {
     public class CustomExceptionHandler
     {
@@ -21,6 +21,10 @@ namespace Clean.WebApi.Exception
             catch (ValidationException ex)
             {
                 await HandleValidationExceptionAsync(context, ex);
+            }
+            catch (Exception e)
+            {
+                throw;
             }
         }
 

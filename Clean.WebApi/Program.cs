@@ -1,5 +1,5 @@
 using Clean.Infrastructure;
-using Clean.WebApi.Exception;
+using Clean.WebApi.Exceptions;
 using Clean.Application;
 using Clean.Application.Common.AppConfiguration;
 using Clean.Application.Common.Authentication;
@@ -11,6 +11,7 @@ IConfiguration configuration = builder.Configuration;
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
+builder.Services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 builder.Services.AddJWTAuthentication(configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

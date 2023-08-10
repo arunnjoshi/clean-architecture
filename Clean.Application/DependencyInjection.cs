@@ -1,4 +1,5 @@
-﻿using Clean.Application.Common.Validations;
+﻿using Clean.Application.Common.Authentication;
+using Clean.Application.Common.Validations;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +25,7 @@ namespace Clean.Application
                 //cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
                 //cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
             });
+            services.AddScoped<JwtTokenService>();
             return services;
         }
     }

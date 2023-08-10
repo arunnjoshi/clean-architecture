@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Clean.Application.Common.Authentication;
 using Clean.Application.Common.Interfaces;
-using Clean.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +10,6 @@ namespace Clean.Application.Demo.Queries
     {
         private readonly IApplicationDbContext _dbContext;
         private readonly IMapper _mapper;
-
         public GetDemoQueryHandler(IApplicationDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;

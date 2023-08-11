@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Clean.Domain;
 
-namespace Clean.Application.Demo.Queries
+namespace Clean.Application.Demo.Queries.List
 {
     partial class MappingProfile : Profile
     {

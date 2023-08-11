@@ -1,4 +1,4 @@
-﻿namespace Clean.Application.Demo.Queries
+﻿namespace Clean.Application.Demo.Queries.List
 {
     public class GetDemoResponse
     {

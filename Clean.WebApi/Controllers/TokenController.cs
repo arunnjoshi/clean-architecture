@@ -1,4 +1,5 @@
 ﻿using Clean.Application.Common.Authentication;
+using Clean.Application.Common.Response;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,9 +17,10 @@ namespace Clean.WebApi.Controllers
         }
 
         [HttpGet("CreateToken")]
-        public string CreateToken()
+        public ActionResult<ApiResponse<string>> CreateToken()
         {
-            return _jwtTokenService.CreateToken();
+            var token = _jwtTokenService.CreateToken();
+            return ApiResponse<string>.sendResponse(token, "Login sucessfully.", true, StatusCodes.Status200OK);
         }
     }
 }

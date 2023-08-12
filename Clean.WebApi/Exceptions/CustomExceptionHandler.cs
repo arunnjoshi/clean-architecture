@@ -22,7 +22,7 @@ namespace Clean.WebApi.Exceptions
             {
                 await HandleValidationExceptionAsync(context, ex);
             }
-            catch (Exception e)
+            catch
             {
                 throw;
             }

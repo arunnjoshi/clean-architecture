@@ -14,12 +14,13 @@
 		<PackageReference Include="MediatR" Version="12.1.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.6" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
 	</ItemGroup>
   <ItemGroup>
 	<ProjectReference Include="..\Clean.Domain\Clean.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Demo\Commands\" />
+	<Folder Include="Demo\Commands\" />
   </ItemGroup>
 
 </Project>

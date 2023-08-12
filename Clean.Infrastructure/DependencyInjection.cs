@@ -5,6 +5,8 @@ using Clean.Application.Common.Interfaces;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Clean.Infrastructure.Data.Interceptors;
 using Microsoft.Extensions.Configuration;
+using Clean.Application.User;
+using Microsoft.AspNetCore.Identity;
 
 namespace Clean.Infrastructure
 {
@@ -20,6 +22,9 @@ namespace Clean.Infrastructure
                 options.UseSqlServer(connectionString.Value);
             });
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultTokenProviders();
             return services;
         }
     }

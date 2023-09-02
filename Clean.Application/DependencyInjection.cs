@@ -1,5 +1,4 @@
-﻿using Clean.Application.Common.Authentication;
-using Clean.Application.Common.Validations;
+﻿using Clean.Application.Common.Validations;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +24,7 @@ public static class DependencyInjection
             //cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
             //cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
         });
-        services.AddScoped<JwtTokenService>();
+        //services.AddScoped<JwtTokenService>();
         return services;
     }
 }

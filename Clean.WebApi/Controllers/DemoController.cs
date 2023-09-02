@@ -12,6 +12,7 @@ namespace Clean.WebApi.Controllers;
 [ApiController]
 [Route("[controller]")]
 //[AllowAnonymous]
+[Authorize]
 public class DemoController : ControllerBase
 {
     private readonly IMediator _mediator;

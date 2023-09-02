@@ -22,7 +22,7 @@ namespace Clean.Application.Demo.Queries.Id
         public async Task<ApiResponse<GetDemoResponse>> Handle(GetDemoByIdQuery request, CancellationToken cancellationToken)
         {
             var demo = await _dbContext.Demo.FirstOrDefaultAsync(x => x.Id == request.Id);
-            return ApiResponse<GetDemoResponse>.sendResponse(data: _mapper.Map<GetDemoResponse>(demo), "sucessfull", true, (int)StatusCodes.Status200OK);
+            return ApiResponse<GetDemoResponse>.sendResponse(data: _mapper.Map<GetDemoResponse>(demo), "successful", true, (int)StatusCodes.Status200OK);
         }
     }
 }

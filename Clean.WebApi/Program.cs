@@ -32,7 +32,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseAuthorization();
 
-app.MapControllers().RequireAuthorization();
+app.MapControllers();
+//app.MapControllers().RequireAuthorization();
 app.UseMiddleware<CustomExceptionHandler>();
 
 app.Run();

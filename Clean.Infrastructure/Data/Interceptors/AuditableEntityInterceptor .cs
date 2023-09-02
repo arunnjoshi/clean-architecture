@@ -1,4 +1,4 @@
-﻿using Clean.Domain.Entites.Common;
+﻿using Clean.Domain.Entitles.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;

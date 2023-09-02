@@ -3,6 +3,7 @@ using Clean.Application.Common.Response;
 using Clean.Application.Demo.Queries.Id;
 using Clean.Application.Demo.Queries.List;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
@@ -10,6 +11,7 @@ namespace Clean.WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+//[AllowAnonymous]
 public class DemoController : ControllerBase
 {
     private readonly IMediator _mediator;

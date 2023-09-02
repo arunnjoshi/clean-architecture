@@ -1,10 +1,10 @@
-﻿using Clean.Domain;
+﻿using Clean.Domain.Entitles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Clean.Infrastructure.Data.Configurations
 {
-    public class DemoConfigurations : IEntityTypeConfiguration<DemoEntity>
+	public class DemoConfigurations : IEntityTypeConfiguration<DemoEntity>
     {
         public void Configure(EntityTypeBuilder<DemoEntity> builder)
         {

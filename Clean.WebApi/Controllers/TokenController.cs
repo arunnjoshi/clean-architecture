@@ -1,10 +1,7 @@
-﻿using Clean.Application.Common.Response;
+﻿using Clean.Application.Common.Authentication;
+using Clean.Application.Common.Response;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace Clean.WebApi.Controllers
 {
@@ -13,16 +10,16 @@ namespace Clean.WebApi.Controllers
 	[AllowAnonymous]
 	public class TokenController : ControllerBase
 	{
-		//private readonly JwtTokenService _jwtTokenService;
-		public TokenController()
+		private readonly JwtTokenService _jwtTokenService;
+		public TokenController(JwtTokenService jwtTokenService)
 		{
-			//_jwtTokenService = jwtTokenService;
+			_jwtTokenService = jwtTokenService;
 		}
 
 		[HttpGet("CreateToken")]
 		public ActionResult<ApiResponse<string>> CreateToken()
 		{
-			return ApiResponse<string>.sendResponse("", "Login sucessfully.", true, StatusCodes.Status200OK);
+			return ApiResponse<string>.sendResponse(_jwtTokenService.CreateToken(), "Login successfully.", true, StatusCodes.Status200OK);
 		}
 	}
 }

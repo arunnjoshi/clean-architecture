@@ -2,11 +2,8 @@ using Clean.Infrastructure;
 using Clean.WebApi.Exceptions;
 using Clean.Application;
 using Clean.Application.Common.AppConfiguration;
-//using Clean.Application.Common.Authentication;
+using Clean.Application.Common.Authentication;
 using Clean.Infrastructure.Data;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 IConfiguration configuration = builder.Configuration;
@@ -15,9 +12,11 @@ IConfiguration configuration = builder.Configuration;
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
+builder.Services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 builder.Services.AddApplicationServices(configuration);
 builder.Services.AddInfrastructureServices(configuration);
-builder.Services.AddAuthorization();
+builder.Services.AddJwtServices(configuration);
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -32,7 +31,7 @@ app.UseAuthorization();
 app.UseAuthorization();
 
 app.MapControllers();
-//app.MapControllers().RequireAuthorization();
+app.MapControllers().RequireAuthorization();
 app.UseMiddleware<CustomExceptionHandler>();
 
 app.Run();

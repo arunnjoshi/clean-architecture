@@ -17,9 +17,9 @@ namespace Clean.WebApi.Controllers
 		}
 
 		[HttpGet("CreateToken")]
-		public ActionResult<ApiResponse<string>> CreateToken()
+		public async Task<ActionResult<ApiResponse<string>>> CreateToken()
 		{
-			return ApiResponse<string>.sendResponse(_jwtTokenService.CreateToken(), "Login successfully.", true, StatusCodes.Status200OK);
+			return ApiResponse<string>.sendResponse(await _jwtTokenService.CreateToken(), "Login successfully.", true, StatusCodes.Status200OK);
 		}
 	}
 }

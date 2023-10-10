@@ -1,4 +1,6 @@
 ﻿using Clean.Application.Common.AppConfiguration;
+using Clean.Application.User;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -10,14 +12,18 @@ namespace Clean.Application.Common.Authentication
 	public class JwtTokenService
 	{
 		private readonly JwtSettings _jwtSettings;
+		private readonly SignInManager<ApplicationUser> _signInManager;
 
-		public JwtTokenService(IOptions<JwtSettings> options)
+		public JwtTokenService(IOptions<JwtSettings> options, SignInManager<ApplicationUser> signInManager)
 		{
 			_jwtSettings = options.Value;
+			_signInManager = signInManager;
 		}
 
-		public string CreateToken()
+		public async Task<string> CreateToken()
 		{
+			var user = await _signInManager.PasswordSignInAsync("administrator@localhost", "Admin@1234", false, false);
+
 			var secretKey = _jwtSettings.Key;
 
 			var tokenHandler = new JwtSecurityTokenHandler();

@@ -20,7 +20,7 @@ namespace Clean.WebApi.Controllers
         public ActionResult<ApiResponse<string>> CreateToken()
         {
             var token = _jwtTokenService.CreateToken();
-            return ApiResponse<string>.sendResponse(token, "Login sucessfully.", true, StatusCodes.Status200OK);
+            return ApiResponse<string>.sendResponse(token, "Login successfully.", true, StatusCodes.Status200OK);
         }
     }
 }

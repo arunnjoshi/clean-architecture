@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean.WebApi", "Clean.WebApi\Clean.WebApi.csproj", "{5BAE8E84-65C0-4589-9C77-90834D87AE04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clean.WebApi", "./src/Clean.WebApi\Clean.WebApi.csproj", "{5BAE8E84-65C0-4589-9C77-90834D87AE04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Domain", "Clean.Domain\Clean.Domain.csproj", "{E7C586EE-7D63-4A29-886D-3365DB21C403}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Domain", "./src/Clean.Domain\Clean.Domain.csproj", "{E7C586EE-7D63-4A29-886D-3365DB21C403}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Application", "Clean.Application\Clean.Application.csproj", "{2E983804-177C-4598-ABA6-4C24E89FD782}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Application", "./src/Clean.Application\Clean.Application.csproj", "{2E983804-177C-4598-ABA6-4C24E89FD782}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Infrastructure", "Clean.Infrastructure\Clean.Infrastructure.csproj", "{460C3A72-E324-45C2-BBB8-8802FD7DA21C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean.Infrastructure", "./src/Clean.Infrastructure\Clean.Infrastructure.csproj", "{460C3A72-E324-45C2-BBB8-8802FD7DA21C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

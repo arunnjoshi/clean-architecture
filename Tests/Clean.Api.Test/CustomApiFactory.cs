@@ -10,6 +10,7 @@ public class CustomApiFactory : WebApplicationFactory<IApiMaker>
 {
 	protected override void ConfigureWebHost(IWebHostBuilder builder)
 	{
+		builder.UseEnvironment("Integration");
 		builder.ConfigureLogging(l =>
 		{
 			l.ClearProviders();

@@ -21,7 +21,7 @@ namespace Clean.Application.Demo.Queries.List
         {
             var demos = await _dbContext.Demo.AsNoTracking().ToListAsync(cancellationToken);
             var data = _mapper.Map<List<GetDemoResponse>>(demos);
-            return ApiResponse<List<GetDemoResponse>>.sendResponse(data, "successful", true, StatusCodes.Status200OK);
+            return ApiResponse<List<GetDemoResponse>>.SendResponse(data, "successful", true, StatusCodes.Status200OK);
         }
     }
 }
